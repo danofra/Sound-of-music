@@ -42,11 +42,6 @@ if (!parametro) {
                 <a href="./details.html?productId=${product._id}" class="btn btn-danger mt-2" id="elimina">Elimina<i class="bi bi-trash ms-2"></i></a>
               </div>
             </div>`;
-          nameProduct.value = product.name;
-          description.value = product.description;
-          brand.value = product.brand;
-          imageUrl.value = product.imageUrl;
-          price.value = product.price;
         }
       });
 
@@ -66,32 +61,6 @@ if (!parametro) {
             } else {
               alert("problema nella cancellazione :(");
               throw new Error("errore nella cancellazione");
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
-      const modifica = document.getElementById("modifica");
-      modifica.addEventListener("click", function (e) {
-        e.preventDefault();
-        let product = {
-          nameProduct: nameProduct.value,
-          description: description.value,
-          brand: brand.value,
-          imageUrl: imageUrl.value,
-          price: price.value,
-        };
-        fetch(url + "/" + parametro, {
-          method: "PUT",
-          body: JSON.stringify(product),
-          headers: {
-            Authorization: token,
-          },
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
             }
           })
           .catch((err) => {
