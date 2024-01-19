@@ -38,39 +38,69 @@ if (!parametro) {
                 <li class="list-group-item">Prezzo: ${product.price}.00€</li>
               </ul>
               <div class="card-body">
-              <a href="./details.html?productId=${product._id}" class="btn btn-warning mt-2" id="modifica">Modifica<i class="bi bi-pen ms-2"></i></a>
+                <a href="./details.html?productId=${product._id}" class="btn btn-warning mt-2" id="modifica">Modifica<i class="bi bi-pen ms-2"></i></a>
                 <a href="./details.html?productId=${product._id}" class="btn btn-danger mt-2" id="elimina">Elimina<i class="bi bi-trash ms-2"></i></a>
               </div>
             </div>`;
+
+          const elimina = document.getElementById("elimina");
+          elimina.addEventListener("click", function (e) {
+            e.preventDefault();
+            fetch(url + "/" + parametro, {
+              method: "DELETE",
+              headers: {
+                Authorization: token,
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  alert("Cancellato!");
+                  location.assign("./index.html");
+                } else {
+                  alert("Problema nella cancellazione :(");
+                  throw new Error("Errore nella cancellazione");
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+
+          const modifica = document.getElementById("modifica");
+          modifica.addEventListener("click", function (e) {
+            e.preventDefault();
+            const updatedData = {
+              nameProduct: product.name,
+              description: product.description,
+              brand: product.brand,
+              imageUrl: product.imageUrl,
+              price: product.price,
+            };
+
+            fetch(url + "/" + parametro, {
+              method: "PUT",
+              body: JSON.stringify(updatedData),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  alert("Modificato!");
+                } else {
+                  alert("Problema nella modifica");
+                  throw new Error("Errore nella modifica");
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
         }
       });
-      const elimina = document.getElementById("elimina");
-      elimina.addEventListener("click", function (e) {
-        e.preventDefault();
-        fetch(url + "/" + parametro, {
-          method: "DELETE",
-          headers: {
-            Authorization: token,
-          },
-        })
-          .then((response) => {
-            if (response.ok) {
-              alert("cancellato!");
-              location.assign("./index.html");
-            } else {
-              alert("problema nella cancellazione :(");
-              throw new Error("errore nella cancellazione");
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
-
-      const modifica = document.getElementById("modifica");
-      modifica.setAttribute("href", "./backoffice.html?productId=" + parametro);
     })
-    .catch((error) => {
-      console.error("Si è verificato un errore:", error);
+    .catch((err) => {
+      console.log(err);
     });
 }
