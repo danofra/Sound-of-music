@@ -6,7 +6,7 @@ const imageUrl = document.getElementById("imageUrl");
 const price = document.getElementById("price");
 const url = "https://striveschool-api.herokuapp.com/api/product/";
 const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFhNjAxMDE4N2U1YzAwMTgxNGM3MjgiLCJpYXQiOjE3MDU2NjQ1MjgsImV4cCI6MTcwNjg3NDEyOH0.m6j18AqBGfu3uqENFWj6gDgb6LpOFg0ke6rCAt4BuvM";
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJjNTJmMjMzNzk3OTAwMTlhNjcyMzkiLCJpYXQiOjE3MTQxODA4NTAsImV4cCI6MTcxNTM5MDQ1MH0.FHAWvAUKvnGsdtILksmo4lmFqVxiVBeqT2zEkHPrcsU";
 
 const generateCards = function (arrayOfProducts) {
   arrayOfProducts.forEach((product) => {
