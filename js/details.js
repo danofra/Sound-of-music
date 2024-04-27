@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(parametro);
     const url = `https://striveschool-api.herokuapp.com/api/product/${parametro}`;
     const token =
-      "Bearer Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJjNTJmMjMzNzk3OTAwMTlhNjcyMzkiLCJpYXQiOjE3MTQxODA4NTAsImV4cCI6MTcxNTM5MDQ1MH0.FHAWvAUKvnGsdtILksmo4lmFqVxiVBeqT2zEkHPrcsU";
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJjNTJmMjMzNzk3OTAwMTlhNjcyMzkiLCJpYXQiOjE3MTQxODA4NTAsImV4cCI6MTcxNTM5MDQ1MH0.FHAWvAUKvnGsdtILksmo4lmFqVxiVBeqT2zEkHPrcsU";
 
     fetch(url, {
       headers: {
